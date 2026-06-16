@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Smart College Application Generator | AI Powered</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+                <span class="logo-text">Smart Application Generator</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#form">Application</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Smart College Application Generator</h1>
+            <p class="hero-subtitle">Powered by Google Gemini AI</p>
+            <p class="hero-description">Create professional college applications instantly with artificial intelligence. Choose from 7+ categories and get perfectly formatted applications in seconds.</p>
+           
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container" id="form">
+        <!-- Left Column: Application Form -->
+        <div class="form-section">
+            <div class="section-header">
+                <h2>Application Details</h2>
+                <p>Fill in your information below</p>
+            </div>
+
+            <form id="applicationForm">
+                <!-- Student Name -->
+                <div class="input-group">
+                    <label for="studentName">
+                        Student Name
+                    </label>
+                    <input type="text" id="studentName" name="student_name" 
+                           placeholder="Enter your full name" required>
+                </div>
+
+                <!-- Enrollment Number -->
+                <div class="input-group">
+                    <label for="enrollmentNo">
+                        Enrollment Number
+                    </label>
+                    <input type="text" id="enrollmentNo" name="enrollment_no" 
+                           placeholder="e.g., EN2024001" required>
+                </div>
+
+                 <!-- College Select -->
+                            <div class="input-group">
+                    <label for="college">Select College</label>
+
+                    <select id="college" name="college" required>
+                        <option value="">Choose College</option>
+                        <option value="Government Polytechnic College">
+                            Government Polytechnic College
+                        </option>
+                        <option value="L.D. College of Engineering">
+                            L.D. College of Engineering
+                        </option>
+                        <option value="Gyanmanjari Institute of Technology">
+                            Gyanmanjari Institute of Technology
+                        </option>
+                         <option value="Smt.K.B.Parekh College of Computer Science">
+                            Smt.K.B.Parekh College of Computer Science
+                        </option>
+                         <option value="Shree Parekh Engineering College">
+                           Shree Parekh Engineering College
+                        </option>
+                    </select>
+                </div>
+
+                <!-- Department -->
+                <div class="input-group">
+                    <label for="department">
+                        Department / Class
+                    </label>
+                    <select id="department" name="department" required>
+                        <option value="">Select Department</option>
+                        <option value="Computer Engineering">Computer Engineering</option>
+                        <option value="Information Technology">Information Technology</option>
+                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+                        <option value="Civil Engineering">Civil Engineering</option>
+                        <option value="Electrical Engineering">Electrical Engineering</option>
+                        <option value="Electronics Engineering">Electronics Engineering</option>
+                    </select>
+                </div>
+
+                <!-- Application Category -->
+                <div class="input-group">
+                    <label for="category">
+        
+                        Application Category
+                    </label>
+                    <select id="category" name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Leave Application">Leave Application</option>
+                        <option value="Fee Issue">Fee Issue</option>
+                        <option value="Examination Issue">Examination Issue</option>
+                        <option value="Faculty Complaint">Faculty Complaint</option>
+                        <option value="Canteen Complaint">Canteen Complaint</option>
+                        <option value="Library Issue">Library Issue</option>
+                        <option value="ID Card Issue">ID Card Issue</option>
+                        <option value="Apology Form">Apology Form</option>
+                    </select>
+                </div>
+
+                <!-- Date -->
+                <div class="input-group">
+                    <label for="date">
+                        Date
+                    </label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+
+                <!-- Reason -->
+                <div class="input-group">
+                    <label for="reason">
+                        Reason / Issue Description
+                    </label>
+                    <textarea id="reason" name="reason" rows="4" 
+                              placeholder="Describe your issue or reason for application in detail..."
+                              required></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="generateBtn" class="btn-generate">
+                    Generate Application with AI
+                </button>
+            </form>
+        </div>
+
+        <!-- Right Column: Generated Application -->
+        <div class="output-section">
+            <div class="section-header">
+                <h2> AI Generated Application</h2>
+                <p>Your professional application will appear here</p>
+            </div>
+
+            <div class="application-container">
+                <div id="applicationOutput" class="application-content">
+                    <div class="placeholder">
+                        <div class="placeholder-icon"></div>
+                        <p>Fill the form and click "Generate" to create your AI-powered application</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons" id="actionButtons" style="display: none;">
+                <button id="copyBtn" class="btn-copy">
+                    Copy to Clipboard
+                </button>
+                <button id="downloadBtn" class="btn-download">
+                    Download as PDF
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <h2>About This Project</h2>
+            <p>This Smart College Application Generator uses Google's Gemini AI to automatically create professional and well-formatted college applications. Simply provide your details and let AI do the rest!</p>
+            <div class="features-grid">
+                <div class="feature">
+                    <img src="{{ url_for('static', filename='AI.png') }}" alt="AI Powered">
+                    <h3>AI Powered</h3>
+                    <p>Powered by Google Gemini AI for intelligent content generation</p>
+                </div>
+                <div class="feature">
+                    <img src="{{ url_for('static', filename='PDF.png') }}" alt="PDF Export">
+                    <h3>PDF Export</h3>
+                    <p>Download applications as professional PDF documents</p>
+                </div>
+                <div class="feature">
+                    <img src="{{ url_for('static', filename='Instant.png') }}" alt="Instant Results">
+                    <h3>Instant Results</h3>
+                    <p>Generate professional applications in seconds</p>
+                </div>
+                <div class="feature">
+                    <img src="{{ url_for('static', filename='Categories.png') }}" alt="Categories">
+                    <h3>7+ Categories</h3>
+                    <p>Support for all common college application types</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Smart College Application Generator | Diploma IT Internship Project</p>
+        <p>Powered by Google Gemini AI & Flask Framework</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
