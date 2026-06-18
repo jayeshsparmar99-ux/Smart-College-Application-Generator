@@ -1,5 +1,5 @@
-# Smart College Application Generator Using AI
 
+# Smart College Application Generator Using AI
 ## Overview
 
 Smart College Application Generator is an AI-powered web application that helps students generate professional and properly formatted college applications automatically.
@@ -262,8 +262,7 @@ The Smart College Application Generator is a useful AI-based web application tha
 
 ---
 
-## Developed By
-
+## Developed By    
 Jayesh Parmar
 
 Diploma in Information Technology

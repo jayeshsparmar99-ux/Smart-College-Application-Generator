@@ -209,3 +209,23 @@ downloadBtn.addEventListener('click', async () => {
         downloadBtn.innerHTML = originalText;
     }
 });
+
+const themeBtn = document.getElementById("themeToggle");
+
+if(localStorage.getItem("theme") === "light"){
+    document.body.classList.add("light-mode");
+    themeBtn.innerHTML = "☀️";
+}
+
+themeBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("light-mode");
+
+    if(document.body.classList.contains("light-mode")){
+        localStorage.setItem("theme","light");
+        themeBtn.innerHTML = "☀️";
+    }else{
+        localStorage.setItem("theme","dark");
+        themeBtn.innerHTML = "🌙";
+    }
+});
