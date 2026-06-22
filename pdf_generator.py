@@ -14,7 +14,7 @@ from reportlab.lib.fonts import addMapping
 import io
 from datetime import datetime
 
-def generate_pdf(application_text):
+def generate_pdf(application_text, college_name):
     """
     Generate a PDF file from application text
     Returns a BytesIO buffer containing the PDF
@@ -59,8 +59,8 @@ def generate_pdf(application_text):
     )
     
     # Add college header
-    header_text = "<b>GOVERNMENT POLYTECHNIC COLLEGE</b><br/>"
-    header_text += "Approved by AICTE | Affiliated to State Technical Board<br/>"
+    header_text = f"<b>{college_name.upper()}</b><br/>"
+    header_text += "APPLICATION LETTER<br/>"
     header_text += f"Date: {datetime.now().strftime('%d/%m/%Y')}"
     
     header = Paragraph(header_text, title_style)
@@ -68,7 +68,7 @@ def generate_pdf(application_text):
     story.append(Spacer(1, 0.2 * inch))
     
     # Add separator line
-    story.append(Paragraph("<hr/>", body_style))
+    #story.append(Paragraph("<hr/>", body_style))
     story.append(Spacer(1, 0.3 * inch))
     
     # Process application text and add to PDF
@@ -92,8 +92,8 @@ def generate_pdf(application_text):
             story.append(Spacer(1, 0.1 * inch))
     
     # Add footer
-    story.append(Spacer(1, 0.3 * inch))
-    story.append(Paragraph("<hr/>", body_style))
+    story.append(Spacer(1, 0.05 * inch))
+   
     footer_text = "<i>This is a computer-generated application. No signature required.</i>"
     footer_style = ParagraphStyle(
         'Footer',

@@ -181,7 +181,8 @@ downloadBtn.addEventListener('click', async () => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                application: window.currentApplication
+                application: window.currentApplication, 
+                 college: document.getElementById("college").value
             })
         });
         

@@ -17,12 +17,12 @@ load_dotenv()
 app = Flask(__name__)
 
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")  # IMPORTANT: Replace this!
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") 
 
 # Configure Gemini
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel('gemini-2.5-flash')
-# College name (customize as needed)
+# College name 
 COLLEGE_NAME = "{data['college']}"
 
 def generate_application_content(data):
@@ -140,7 +140,8 @@ def generate_fallback_application(data):
         "Faculty Complaint": "Regarding Faculty Conduct Issue",
         "Canteen Complaint": "Complaint Regarding Canteen Services",
         "Library Issue": "Regarding Library Services Issue",
-        "ID Card Issue": "Request for ID Card Related Assistance"
+        "ID Card Issue": "Request for ID Card Related Assistance",
+        "apology form": "student apology form"
     }
     
     subject = category_subjects.get(data['category'], "Application Request")
@@ -225,12 +226,13 @@ def download_pdf():
     try:
         data = request.get_json()
         application_text = data.get('application', '')
+        college_name = data.get('college', 'College Name')
         
         if not application_text:
             return jsonify({'success': False, 'error': 'No application text provided'}), 400
         
         # Generate PDF
-        pdf_buffer = generate_pdf(application_text)
+        pdf_buffer = generate_pdf(application_text, college_name)
         
         # Return PDF as downloadable file
         return send_file(
@@ -241,8 +243,10 @@ def download_pdf():
         )
         
     except Exception as e:
+       # return jsonify({'success': False, 'error': str(e)}), 500
+           
+        print("PDF ERROR:", e)
         return jsonify({'success': False, 'error': str(e)}), 500
-
 
 
 if __name__ == '__main__':
