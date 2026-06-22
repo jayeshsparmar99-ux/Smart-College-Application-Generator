@@ -1,5 +1,16 @@
 
 # Smart College Application Generator Using AI
+
+Smart College Application Generator
+
+• Developed a Flask-based AI application generator using Google Gemini AI.
+• Generates professional college applications automatically.
+• Supports multiple application categories.
+• Dynamic PDF export using ReportLab.
+• Dark/Light mode UI.
+• Responsive HTML, CSS, JavaScript frontend.
+• Secure API key management using .env.
+
 ## Overview
 
 Smart College Application Generator is an AI-powered web application that helps students generate professional and properly formatted college applications automatically.
